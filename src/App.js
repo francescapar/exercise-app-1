@@ -2,17 +2,20 @@ import './App.css';
 import { useCallback, useState } from 'react';
 import DurationExercise from './components/DurationExercise';
 import RepetitionExercise from './components/RepetitionExercise';
+import DistanceExercise from './components/DistanceExercise';
 
 const MENU_SCREEN = "menu";
 const EXERCISE_SCREEN = "exercise";
 const DURATION_EXERCISE = "duration";
 const REPETITION_EXERCISE = "repetition";
+const DISTANCE_EXERCISE = "distance";
 
 let exerciseList = [
   {type: DURATION_EXERCISE, name: "Running"},
   {type: DURATION_EXERCISE, name: "Rowing"},
   {type: DURATION_EXERCISE, name: "Swimming"},
-  {type: REPETITION_EXERCISE, name: "Push Ups"}
+  {type: REPETITION_EXERCISE, name: "Push Ups"},
+  {type: DISTANCE_EXERCISE, name: "Cycling" },
 ];
 
 function App() {
@@ -48,6 +51,12 @@ function App() {
           exercise={currentExercise}
           setMenuScreen={() => setCurrentScreen(MENU_SCREEN)}
           />
+      break;
+      case DISTANCE_EXERCISE: 
+      screenComponent = <DistanceExercise
+        exercise={currentExercise}
+        setMenuScreen={() => setCurrentScreen(MENU_SCREEN)}
+      />;
       break;
       default:
         screenComponent = undefined
